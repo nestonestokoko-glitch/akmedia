@@ -90,7 +90,7 @@ export default function FinalCta() {
   return (
     <section
       ref={rootRef}
-      className="relative overflow-hidden bg-black py-28 sm:py-36"
+      className="relative overflow-hidden bg-black py-20 sm:py-28 lg:py-36"
     >
       {/* Thin blue progress hairline at the very edge */}
       <span
@@ -117,7 +117,7 @@ export default function FinalCta() {
           as="h2"
           text="Influence that actually moves people."
           accent="actually moves people"
-          className="mx-auto max-w-[18ch] text-balance text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[1.03] tracking-[-0.04em] text-white"
+          className="mx-auto max-w-[18ch] text-balance text-[clamp(2.5rem,7.5vw,5.5rem)] font-medium leading-[1.03] tracking-[-0.04em] text-white"
         />
         <p
           data-cta="sub"

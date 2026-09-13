@@ -287,35 +287,16 @@ uppercase {
     border-radius: 4px;
 }
 
-/* Hamburger menu */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .main-nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--color-background);
+@media (max-width: 900px) {
+    .header-inner {
         flex-direction: column;
-        padding: var(--spacing-24);
-        box-shadow: var(--shadow-md);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: clip-path 0.3s ease;
+        gap: var(--spacing-16);
     }
 
-    .main-nav.open {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    .main-nav .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-16) var(--spacing-24);
     }
 }
 
@@ -332,7 +313,7 @@ uppercase {
     padding: var(--spacing-80) 0;
 }
 
-.hero-inner {
+.hero-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--spacing-48);
@@ -375,7 +356,7 @@ uppercase {
 }
 
 @media (min-width: 768px) {
-    .hero-inner {
+    .hero-content {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -584,7 +565,7 @@ section {
 
 .campaigns-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     gap: var(--spacing-32);
     margin-top: var(--spacing-48);
 }
@@ -819,8 +800,14 @@ section {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: var(--spacing-48);
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: auto 1fr;
+    }
 }
 
 .footer-brand h3 {
@@ -859,6 +846,8 @@ section {
 
 .footer-bottom {
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-16);
     justify-content: space-between;
     align-items: center;
     margin-top: var(--spacing-48);

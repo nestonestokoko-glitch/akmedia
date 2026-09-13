@@ -49,7 +49,7 @@ const paths = [
 
 export default function DualPath() {
   return (
-    <section className="relative bg-ink">
+    <section className="relative overflow-x-clip bg-ink">
       {/* Section header */}
       <div className="container-px mx-auto max-w-[1400px] pt-16 sm:pt-20 lg:pt-24">
         <div className="mb-10 flex items-end justify-between gap-6 sm:mb-12">
@@ -78,8 +78,10 @@ export default function DualPath() {
               duration={1}
               threshold={0.12}
               className={cn(
-                "group relative flex min-h-[420px] flex-col justify-between overflow-hidden px-6 py-12 sm:min-h-[480px] sm:px-10 sm:py-14 lg:min-h-[80vh]",
-                i === 0 ? "bg-ink-2 lg:border-r lg:border-line-2" : "bg-ink-3"
+                "group relative flex min-h-[340px] flex-col justify-between overflow-hidden px-6 py-10 sm:min-h-[480px] sm:px-10 sm:py-14 lg:min-h-[80vh]",
+                i === 0
+                  ? "border-b border-line-2 bg-ink-2 lg:border-b-0 lg:border-r"
+                  : "bg-ink-3"
               )}
             >
               {/* Edge accent stripe */}

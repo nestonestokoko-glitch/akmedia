@@ -217,8 +217,8 @@ function Lockup({
         CASE {String(index + 1).padStart(2, "0")} / {String(campaigns.length).padStart(2, "0")}
       </span>
 
-      <div className="container-px relative z-10 mx-auto flex h-full w-full max-w-[1400px] items-center py-20">
-        <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-10">
+      <div className="container-px relative z-10 mx-auto flex h-full w-full max-w-[1400px] items-center py-10 sm:py-20">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Type lockup */}
           <div className="max-w-2xl">
             <div

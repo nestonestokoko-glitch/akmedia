@@ -160,10 +160,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative border-t border-line-2/70 bg-ink-2/40 py-section">
+    <section id="contact" className="relative overflow-x-clip border-t border-line-2/70 bg-ink-2/40 py-section">
       <div className="container-px mx-auto max-w-[1400px]">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-          {/* Left — the ask */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          {/* Left column — the ask + what happens next */}
+          <div className="flex flex-col gap-10 lg:gap-12">
           <GsapReveal y={24} threshold={0.1}>
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-blue-bright">
@@ -181,7 +182,7 @@ export default function Contact() {
             </div>
           </GsapReveal>
 
-          <GsapReveal as="ol" y={26} stagger={0.12} threshold={0.05} className="mt-10 space-y-5">
+          <GsapReveal as="ol" y={26} stagger={0.12} threshold={0.05} className="space-y-5">
             <li data-gsap-item className="flex items-start gap-4 text-sm text-white/85">
               <span aria-hidden className="num-lock mt-0.5 font-medium text-blue-bright">01</span>
               <span>
@@ -204,6 +205,7 @@ export default function Contact() {
               </span>
             </li>
           </GsapReveal>
+          </div>
 
           {/* Right — choice + form */}
           <GsapReveal y={28} x={24} duration={0.9} threshold={0.08}>
@@ -225,7 +227,7 @@ export default function Contact() {
                     setErrors({});
                   }}
                   className={cn(
-                    "rounded-full px-3 py-2.5 text-sm font-medium transition-all duration-300",
+                    "rounded-full px-2.5 py-2 text-[13px] font-medium transition-all duration-300 sm:px-3 sm:py-2.5 sm:text-sm",
                     mode === tab.id ? "bg-blue text-white" : "text-mist hover:text-white"
                   )}
                 >

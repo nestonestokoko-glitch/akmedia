@@ -1,0 +1,8 @@
+Initial commit — AK Media India website
+
+Next.js 15 + React 19 + TypeScript + Tailwind v4 editorial rebuild
+("The Live Editor's Desk") with GSAP motion toolkit, Framer scroll-jack,
+typed API layer, and real published data. Includes design docs (skill.md,
+seconddraft.md, prd.md) and the original static prototype.
+
+Co-Authored-By: Claude <noreply@anthropic.com>

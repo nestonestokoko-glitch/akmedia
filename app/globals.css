@@ -116,6 +116,11 @@
     @apply bg-ink text-bone antialiased;
     font-feature-settings: "cv11", "ss01";
     text-rendering: optimizeLegibility;
+    /* Clip any stray horizontal overflow (decorative orbs, entrance
+       transforms) so a phone never shows a sideways scrollbar. Unlike
+       `hidden`, `clip` does not create a scroll container, so sticky
+       sections (scroll-jack, founder quote) keep working. */
+    overflow-x: clip;
   }
 
   ::selection {

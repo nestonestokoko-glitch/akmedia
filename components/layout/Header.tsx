@@ -131,9 +131,13 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={reduce ? undefined : { opacity: 0 }}
             transition={{ duration: 0.4, ease }}
-            className="fixed inset-0 z-40 flex flex-col bg-ink/95 backdrop-blur-2xl"
+            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink/95 backdrop-blur-2xl"
           >
-            <div className="container-px mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center py-24">
+            <div className="container-px mx-auto flex min-h-full w-full max-w-[1400px] flex-col py-16 sm:py-24">
+              {/* my-auto centers the group when it fits and anchors it to the top
+                  when the menu overflows a short viewport — so the top links
+                  never become unreachable (justify-center would clip them). */}
+              <div className="my-auto flex w-full flex-col">
               {/* Menu header */}
               <div className="mb-10 flex items-baseline justify-between border-b border-line-2 pb-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-dust">
@@ -228,6 +232,7 @@ export default function Header() {
                 >
                   api@akmediaindia.com
                 </a>
+              </div>
               </div>
             </div>
           </motion.div>

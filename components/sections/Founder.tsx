@@ -37,7 +37,7 @@ export default function Founder() {
       </span>
 
       <div className="container-px relative mx-auto max-w-[1400px]">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           {/* Quote */}
           <GsapReveal y={28} threshold={0.15}>
             <div className="lg:sticky lg:top-28">

@@ -74,7 +74,7 @@ export default function CreatorNetwork() {
                 <TiltCard
                   key={creator.id}
                   data-gsap-item
-                  className="min-w-[320px] snap-start rounded-2xl sm:min-w-[360px]"
+                  className="w-[82vw] max-w-[350px] snap-start rounded-2xl sm:w-auto sm:min-w-[340px] lg:min-w-[380px]"
                 >
                   <article className="group flex h-full flex-col border border-line-2 bg-ink p-6 transition-colors duration-300 hover:border-blue/50">
                     {/* Identity row */}

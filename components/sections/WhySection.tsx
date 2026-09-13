@@ -40,9 +40,9 @@ export default function WhySection() {
             <div
               key={point.n}
               data-gsap-item
-              className="group relative grid items-start gap-3 border-b border-line-2 py-7 pr-4 transition-colors duration-300 hover:bg-blue/[0.04] sm:grid-cols-[90px_1fr_1.5fr] sm:gap-8 sm:py-9 sm:pr-12"
+              className="group relative grid grid-cols-[auto_1fr] items-baseline gap-x-4 gap-y-3 border-b border-line-2 py-7 pr-4 transition-colors duration-300 hover:bg-blue/[0.04] sm:items-start sm:grid-cols-[90px_1fr_1.5fr] sm:gap-8 sm:gap-y-0 sm:py-9 sm:pr-12"
             >
-              {/* Number as editorial figure */}
+              {/* Number as editorial figure — sits inline with the title on mobile */}
               <span className="num-lock text-[clamp(1.5rem,2.6vw,2.1rem)] font-medium leading-none tracking-[-0.03em] text-blue">
                 {point.n}
               </span>
@@ -51,7 +51,7 @@ export default function WhySection() {
                 {point.title}
               </h3>
 
-              <p className="max-w-[46ch] text-sm leading-relaxed text-mist sm:text-[15px]">
+              <p className="col-span-2 max-w-[46ch] text-sm leading-relaxed text-mist sm:col-span-1 sm:text-[15px]">
                 {point.body}
               </p>
 

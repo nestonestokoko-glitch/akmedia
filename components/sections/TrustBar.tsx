@@ -12,7 +12,8 @@ import GsapReveal from "@/components/ui/GsapReveal";
  * separated by vertical hairlines. The brand marquee and label rise in,
  * the fact cells stagger up, and the blue top hairline draws itself from
  * the left when the row enters view. No cards, no shadows — data is the
- * storytelling (see skill.md §14). On mobile the row scrolls sideways.
+ * storytelling (see skill.md §14). On mobile the figures collapse into a
+ * 2×2 grid so all four numerals stay visible without sideways scrolling.
  */
 export default function TrustBar() {
   const loop = [...brandMarks, ...brandMarks];
@@ -91,31 +92,27 @@ export default function TrustBar() {
             </div>
           </GsapReveal>
 
-          {/* Editable rail: overflows sideways on narrow viewports */}
+          {/* Fact grid: 2×2 on mobile (all four large numerals visible at once),
+              full 4-up editorial strip with hairlines from sm up. */}
           <GsapReveal stagger={0.08}>
-            <div className="no-scrollbar -mx-1 overflow-x-auto px-1">
-              <div className="grid min-w-[640px] snap-x grid-cols-4">
-                {stats.map((stat, i) => (
-                  <div
-                    key={stat.label}
-                    data-gsap-item
-                    className="relative flex snap-start flex-col gap-2 px-6 py-2 first:pl-0 last:pr-0 sm:px-8"
-                    style={
-                      i > 0 ? { borderLeft: "1px solid rgba(255,255,255,0.08)" } : undefined
-                    }
-                  >
-                    <span className="flex items-start gap-2.5">
-                      <span aria-hidden className="mt-3 size-1.5 shrink-0 rounded-full bg-blue" />
-                      <span className="num-lock text-[clamp(2.5rem,5.5vw,4.5rem)] font-medium leading-none tracking-[-0.045em] text-white">
-                        <Counter value={stat.value} suffix={stat.suffix} />
-                      </span>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-line-2">
+              {stats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  data-gsap-item
+                  className="relative flex flex-col gap-2 px-2 first:pl-0 sm:px-8 sm:first:pl-6 sm:last:pr-0"
+                >
+                  <span className="flex items-start gap-2.5">
+                    <span aria-hidden className="mt-3 size-1.5 shrink-0 rounded-full bg-blue" />
+                    <span className="num-lock text-[clamp(2.5rem,5.5vw,4.5rem)] font-medium leading-none tracking-[-0.045em] text-white">
+                      <Counter value={stat.value} suffix={stat.suffix} />
                     </span>
-                    <span className="ml-4 max-w-[20ch] text-sm leading-snug text-mist">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+                  </span>
+                  <span className="ml-4 max-w-[20ch] text-sm leading-snug text-mist">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </GsapReveal>
         </div>
