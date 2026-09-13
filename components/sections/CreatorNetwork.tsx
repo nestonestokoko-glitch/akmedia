@@ -143,7 +143,7 @@ export default function CreatorNetwork() {
       {/* Category marquee — real niches only */}
       <GsapReveal y={24} threshold={0.1}>
         <div
-          className="relative mt-14 border-y border-line-2/60 py-5 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+          className="relative mt-14 overflow-hidden border-y border-line-2/60 py-5 [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
           aria-label="Creator categories"
         >
         <div className="marquee-track flex w-max items-center gap-8 pr-8">
