@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AK MEDIA INDIA — Official Color System
+   PRIMARY BLUE   #52A9E5   — action, trust, primary accent
+   DARK GRAY      #212121   — cards, surfaces, navigation
+   BLACK          #000000   — hero, footer, major backgrounds
+   MUTED GREEN    #668156   — secondary / creator accent
+   WHITE          #FFFFFF   — primary text on dark
+   LIGHT GRAY     #F5F5F5   — light sections, supporting text
+   Fonts: Inter (body/UI) + Instrument Serif (display accent)
+   ============================================================ */
+
+@theme {
+  /* --- Palette --- */
+  --color-ink: #000000;              /* Black — hero, footer, major bg  */
+  --color-ink-2: #212121;            /* Dark Gray — cards, surfaces, nav */
+  --color-ink-3: #2e2e2e;            /* elevation above Dark Gray       */
+  --color-ink-4: #3a3a3a;            /* higher elevation — hover surfaces */
+  --color-ink-5: #454545;
+  --color-ink-6: #525252;
+  --color-line: #212121;
+  --color-line-2: rgba(255, 255, 255, 0.08); /* hairline on dark       */
+  --color-line-3: rgba(33, 33, 33, 0.12);    /* hairline on light      */
+  --color-bone: #ffffff;             /* White — primary text            */
+  --color-mist: #f5f5f5;             /* Light Gray — supporting text    */
+  --color-dust: rgba(245, 245, 245, 0.5);    /* low-emphasis text      */
+  --color-paper: #f5f5f5;            /* Light Gray — light sections     */
+
+  /* --- Blue tonal ramp (action · trust · results) — #52A9E5 --- */
+  --color-blue: #52a9e5;             /* Primary Blue — fills, borders   */
+  --color-blue-soft: #3a8fc4;        /* hover — deeper blue             */
+  --color-blue-bright: #7cbfef;      /* light text / numerals on dark (WCAG ≥4.5) */
+  --color-blue-light: #d0e7f6;       /* near-white blue — gradients w/ white */
+  --color-blue-60: rgba(82, 169, 229, 0.6);  /* strong surface wash     */
+  --color-blue-40: rgba(82, 169, 229, 0.4);
+  --color-blue-20: rgba(82, 169, 229, 0.2);
+  --color-blue-10: rgba(82, 169, 229, 0.1);
+  --color-blue-05: rgba(82, 169, 229, 0.05);
+  --color-blue-03: rgba(82, 169, 229, 0.03);
+  --color-blue-glow: rgba(82, 169, 229, 0.5);
+
+  /* --- Mint tonal ramp (creator moments) --- */
+  --color-mint: #668156;             /* Muted Green — creator accent    */
+  --color-mint-soft: #7a956a;
+  --color-mint-bright: #8fa77e;      /* mint text on elevated surfaces  */
+  --color-mint-60: rgba(102, 129, 86, 0.6);
+  --color-mint-40: rgba(102, 129, 86, 0.4);
+  --color-mint-20: rgba(102, 129, 86, 0.2);
+  --color-mint-10: rgba(102, 129, 86, 0.1);
+  --color-mint-05: rgba(102, 129, 86, 0.05);
+  --color-mint-glow: rgba(102, 129, 86, 0.5);
+
+  /* --- Typography --- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  /* Type scale (editorial hierarchy) */
+  --text-display: clamp(3.6rem, 11vw, 8rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.045em;
+  --text-h1: clamp(2.8rem, 7vw, 5.5rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.04em;
+  --text-h2: clamp(2rem, 4.5vw, 3.4rem);
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h3: clamp(1.4rem, 2.2vw, 1.9rem);
+  --text-h3--line-height: 1.14;
+  --text-h3--letter-spacing: -0.02em;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+  --text-meta: 0.8125rem;
+  --text-meta--line-height: 1.5;
+  --text-caption: 0.6875rem;
+  --text-caption--line-height: 1.5;
+
+  /* --- Motion --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* -- Spacing rhythm (8px system) -- */
+  --spacing-section: clamp(5rem, 10vw, 9rem);
+
+  /* --- Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* --- Shadows (depth through shadow only where needed) --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
+  --shadow-glow-blue: 0 0 48px -12px var(--color-blue-glow);
+  --shadow-glow-mint: 0 0 48px -12px var(--color-mint-glow);
+
+  /* --- Container widths (max-w-* utilities) --- */
+  --container-narrow: 50rem;
+  --container-wide: 87.5rem;
+}
+
+/* ------------------- Base ------------------- */
+@layer base {
+  * {
+    border-color: var(--color-line-2);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-ink text-bone antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: var(--color-white, #ffffff);
+  }
+
+  /* Consistent visible focus — Primary Blue */
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-3);
+    border-radius: 8px;
+    border: 2px solid var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-dust);
+  }
+}
+
+/* ------------------- Utilities ------------------- */
+@utility container-px {
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Editorial serif accent word */
+@utility type-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Hide scrollbars on horizontal rails (mouse users still grab/scroll) */
+@utility no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chromium / Safari */
+  }
+}
+
+/* Tabular figures for stat numerals — lock digit widths */
+@utility num-lock {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum", "lnum";
+}
+
+/* ------------------- Keyframes ------------------- */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(0.5deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Grain overlay for a premium film texture */
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
+/* Fine blueprint grid */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, var(--color-line-2) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line-2) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Marquee row */
+.marquee-track {
+  animation: marquee 36s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Media query padding guard for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .animate-drift {
+    animation: none !important;
+  }
+}
