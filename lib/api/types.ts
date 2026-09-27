@@ -48,6 +48,7 @@ export type Creator = {
   category: string;
   metrics: CreatorMetric[];
   hue: string; // tailwind gradient stops, e.g. "from-blue/80 to-transparent"
+  image?: string; // photo URL or local asset path
 };
 
 // ---------- Brands ----------

@@ -708,6 +708,165 @@ Do not turn it into a generic employee/team section.
 
 ---
 
+## Layout & Style Analysis: `section#creator` ("The Creators Behind The Results")
+
+### Context
+In-depth forensic audit and design analysis of the live reference section `section#creator` (titled *"Join 500+ Creators Earning Consistently"*, adapted in the redesign as *"The creators behind the results"*), including its five core component layers (`.sec-label`, `h2.sec-h`, `p.sec-s`, `.cr-slider-outer`, and `a.sec-cta`).
+
+Live Reference URL: [https://akmediaindia.com/#creator](https://akmediaindia.com/#creator)
+
+### Live Element Architecture & Blueprint
+
+```html
+<!-- Live Reference DOM Blueprint -->
+<section class="cr-sec" id="creator">
+  <div class="sec-label">Real Creators. Real Results.</div>
+  <h2 class="sec-h">Join 500+ Creators <em>Earning Consistently</em></h2>
+  <p class="sec-s">Structured brand collaborations designed for premium creator growth.</p>
+
+  <div class="cr-slider-outer">
+    <button class="sl-arr p" onclick="crPrev()">&#8249;</button>
+    <div class="cr-viewport">
+      <div class="cr-track" id="crTrack">
+        <!-- 6 Live Creator Spec-Cards -->
+      </div>
+    </div>
+    <button class="sl-arr n" onclick="crSlide(1)">&#8250;</button>
+  </div>
+
+  <a href="#creatorform" class="sec-cta">Join as a Creator &rarr;</a>
+</section>
+```
+
+### Diagnostics & Baseline Properties
+
+The live reference section currently utilizes a traditional block-level layout with horizontal text alignment and fixed viewport padding.
+
+| Property | Current Live Value (DevTools) | Redesign Target Specification |
+| :--- | :--- | :--- |
+| **Display** | `block` | `flex` (column, centered) / CSS Grid |
+| **Viewport Dimensions** | 320px x 1046px (mobile audit) | Fluid container `min-h-screen`, max-width `1400px` |
+| **Background Color** | `rgb(13, 13, 13)` (`var(--bg2): #0d0d0d`) | Layered ink surface (`#0a0a0a` / `#111111`) |
+| **Padding** | `70px 5vw` (mobile) / `100px 5vw` (desktop) | Fluid vertical rhythm `py-24` to `py-36` (`clamp(5rem, 8vw, 9rem)`) |
+| **Heading Typography** | `clamp(30px, 3.8vw, 50px)`, `Archivo Black` | `clamp(2.5rem, 5vw, 4rem)`, editorial split text |
+| **Label Typography** | 10px uppercase, `letter-spacing: 3px` | 11px uppercase tracking `0.24em`, accent tint |
+| **Card Surface** | `background: #111; border: 1px solid rgba(255,255,255,0.07)` | Hairline spec sheet (`border-line-2`, interactive 3D tilt) |
+| **Card Dimensions** | `min-width: calc(33.333% - 14px)`, `height: 450px` | Responsive rail `w-[82vw] sm:w-[350px] lg:w-[380px]` |
+| **Accent Color** | Yellow `var(--y)` (`#eaff00`) / Glow `rgba(234,255,0,0.28)` | Brand Blue (`#2b5cff`) + Mint (`#668156` / `#34d399`) |
+| **CTA Link** | `.sec-cta` inline-flex pill, yellow on black | Dynamic magnetic pill button with micro-interaction |
+
+### Live Content & Roster Reference Data
+
+The live site displays 6 vetted creators with real verified metrics:
+
+| Creator Name | Niche Category | Metrics (Audience / Earnings / Volume) | Platform Signal |
+| :--- | :--- | :--- | :--- |
+| **GROW with ME** | AI + Tech | **403K+** Subs \| **₹3.5L+** Earned \| **2+** Campaigns | YouTube Verified |
+| **Sonu Yadav** | Tech Creator | **38.5K+** Followers \| **₹1.5L+** Earned \| **8+** Campaigns | Multi-platform |
+| **Fardeen** | E-Com | **111K+** Subs \| **₹3.5L+** Earned \| **4+** Campaigns | YouTube Verified |
+| **Me Tech** | Tech | **63.1K+** Followers \| **₹2.8L+** Earned \| **10+** Campaigns | Instagram / Tech |
+| **Invisible Gyan** | Knowledge Creator | **210K+** Subs \| **₹2L+** Earned \| **5+** Campaigns | YouTube Verified |
+| **Spreading Gyan** | YouTube Growth | **2.7M+** Subs \| **₹12L+** Earned \| **15+** Campaigns | YouTube Top Tier |
+
+### Actionable Findings & Layout Optimizations
+
+1. **Alignment & Centering:**
+   * *Problem:* Child elements (`.sec-label`, `h2.sec-h`, `p.sec-s`, `.cr-slider-outer`, `.sec-cta`) currently rely on parent `text-align: center` inside a block container, causing horizontal drift and fragile centering across varied mobile viewport widths.
+   * *Solution:* Transition the section wrapper to a modern Flexbox structure (`display: flex; flex-direction: column; align-items: center; justify-content: center;`) with `min-height: 100vh` for full viewport framing on landing.
+
+2. **Typography & Visual Hierarchy:**
+   * *Problem:* The heading (`h2.sec-h`) uses a fluid font size (`clamp(30px, 3.8vw, 50px)`), but on larger screens (1440px+) it fails to command authority. Subtext and labels remain static at 10px–14px with weak contrast.
+   * *Solution:* Elevate heading scale to `60px` (`clamp(2.5rem, 5vw, 4.25rem)`) with tighter line-height (`1.05`–`1.1`) and letter-spacing (`-0.03em`). Format as editorial breaking-news headline with split-word emphasis.
+
+3. **Card Presentation & Slider Mechanics:**
+   * *Problem:* Live slider uses fixed width cards (`min-width: calc(33.333% - 14px)`) and imperative JavaScript `onclick="crSlide()"` transform offsets, which stutter on low-power mobile devices.
+   * *Solution:* Use hardware-accelerated CSS snap-scroll rail (`snap-x overflow-x-auto`) paired with momentum touch scrolling, GSAP stagger reveal, and 3D pointer tilt.
+
+4. **CTA Optimization:**
+   * *Problem:* The call-to-action (`a.sec-cta`) is an `inline-flex` element with static 13px text that gets swallowed below large slider cards.
+   * *Solution:* Enhance hit target to `15px 40px` with rounded pill (`border-radius: 50px`), high contrast backdrop, and scale micro-interaction (`hover:scale-105 active:scale-95`).
+
+### Code Guidance & Implementation Patterns
+
+```css
+/* Optimization 1: Modern Flexbox Centering */
+section#creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh; /* Ensures full viewport height */
+  padding: 100px 5vw;
+  background-color: #0d0d0d;
+}
+
+/* Optimization 2: Enhanced Visual Hierarchy */
+section#creator h2.sec-h {
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+section#creator a.sec-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #eaff00;
+  color: #000000;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section#creator a.sec-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(234, 255, 0, 0.3);
+}
+```
+
+#### Modern Component Stack Adaptation (Tailwind CSS / Next.js)
+
+When implementing within modern component frameworks (e.g. `CreatorNetwork.tsx`):
+
+```tsx
+// Tailwind CSS Implementation Pattern
+<section
+  id="creators"
+  className="relative flex min-h-screen flex-col items-center justify-center overflow-clip bg-[#0d0d0d] py-24 text-center"
+>
+  <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#eaff00]">
+    Real Creators. Real Results.
+  </span>
+  
+  <h2 className="mt-4 max-w-[20ch] text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white">
+    Join 500+ Creators <span className="text-[#eaff00]">Earning Consistently</span>
+  </h2>
+  
+  <p className="mt-3 max-w-[460px] text-sm leading-relaxed text-zinc-400">
+    Structured brand collaborations designed for premium creator growth.
+  </p>
+
+  {/* Snap-scroll rail for cards */}
+  <div className="mt-12 w-full max-w-[1400px]">
+    {/* Creator spec-cards with hover tilt & verified badges */}
+  </div>
+
+  <a
+    href="#creator-form"
+    className="mt-12 inline-flex items-center gap-2 rounded-full bg-[#eaff00] px-10 py-4 text-sm font-bold text-black transition-transform duration-200 hover:scale-105 active:scale-95"
+  >
+    Join as a Creator &rarr;
+  </a>
+</section>
+```
+
+---
+
 # 15. BRAND EXPERIENCE
 
 The brand side should communicate:

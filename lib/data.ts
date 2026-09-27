@@ -11,6 +11,7 @@ export type Creator = {
   category: string;
   metrics: { label: string; value: string }[];
   hue: string; // accent pair for the monogram tile
+  image?: string; // photo URL or local asset path
 };
 
 export const stats = [
@@ -27,7 +28,8 @@ export const creators: Creator[] = [
     id: "grow-with-me",
     name: "Grow with ME",
     initials: "GM",
-    category: "Tech Creator",
+    category: "AI + Tech",
+    image: "https://yt3.ggpht.com/wb0gYFHfPxM89Pp0M8_S3WbH7solkXcuMCfOybAf_dEriGhhTx-dNWMNnJgYsQA7wOGfYc7Nyw=s400-c-k-c0x00ffffff-no-rj",
     metrics: [
       { label: "Subscribers", value: "403K+" },
       { label: "Earned", value: "₹3.5L+" },
@@ -39,7 +41,8 @@ export const creators: Creator[] = [
     id: "sonu-yadav",
     name: "Sonu Yadav",
     initials: "SY",
-    category: "Lifestyle",
+    category: "Tech Creator",
+    image: "https://i.ibb.co/hRynYPfh/516451981-17934414708058449-7233703388245179038-n.jpg",
     metrics: [
       { label: "Followers", value: "38.5K" },
       { label: "Earned", value: "₹1.5L+" },
@@ -51,7 +54,8 @@ export const creators: Creator[] = [
     id: "fardeen",
     name: "Fardeen",
     initials: "FD",
-    category: "Tech & Gaming",
+    category: "E-Com",
+    image: "https://yt3.googleusercontent.com/fE3LXgl-YA6Hc2-tsL4W0JM1-F6tExAL9dT_WY7NmU1d1Jh6lifnhn-PmPt-W9-3g5RfriAa=s400-c-k-c0x00ffffff-no-rj",
     metrics: [
       { label: "Subscribers", value: "111K" },
       { label: "Earned", value: "₹3.5L+" },
@@ -63,13 +67,40 @@ export const creators: Creator[] = [
     id: "me-tech",
     name: "Me Tech",
     initials: "MT",
-    category: "Tech Reviews",
+    category: "Tech",
+    image: "https://i.ibb.co/pBdWJmby/436952712-2433701267019248-2350207277516786535-n.jpg",
     metrics: [
       { label: "Followers", value: "63.1K" },
       { label: "Earned", value: "₹2.8L+" },
       { label: "Campaigns", value: "10+" },
     ],
     hue: "from-mint/60 to-transparent",
+  },
+  {
+    id: "invisible-gyan",
+    name: "Invisible Gyan",
+    initials: "IG",
+    category: "Knowledge Creator",
+    image: "https://yt3.googleusercontent.com/pCKMsDtKzVb8SUtFHLoFpyrmTE7eoELR_-0kLNbFpTTwyfe5ijRDdGd_luOMC4kBrfVCzjEo=s900-c-k-c0x00ffffff-no-rj",
+    metrics: [
+      { label: "Subscribers", value: "210K+" },
+      { label: "Earned", value: "₹2.0L+" },
+      { label: "Campaigns", value: "5+" },
+    ],
+    hue: "from-blue/70 to-transparent",
+  },
+  {
+    id: "spreading-gyan",
+    name: "Spreading Gyan",
+    initials: "SG",
+    category: "YouTube Growth",
+    image: "https://yt3.ggpht.com/wb0gYFHfPxM89Pp0M8_S3WbH7solkXcuMCfOybAf_dEriGhhTx-dNWMNnJgYsQA7wOGfYc7Nyw=s400-c-k-c0x00ffffff-no-rj",
+    metrics: [
+      { label: "Subscribers", value: "2.7M+" },
+      { label: "Earned", value: "₹12L+" },
+      { label: "Campaigns", value: "15+" },
+    ],
+    hue: "from-mint/80 to-transparent",
   },
 ];
 
@@ -150,14 +181,36 @@ export const creatorProcess = [
 
 export const founder = {
   name: "Krishna Chandrawanshi",
+  firstName: "Krishna",
+  lastName: "Chandrawanshi",
+  badge: "Founder & Creator",
+  role: "Founder & YouTube Creator",
+  aka: ["Active Krishna", "Techy Krishna", "Founder & YouTube Creator"],
+  image: "/images/founder.jpg",
+  bio: "Krishna Chandrawanshi, also known as Active Krishna and Techy Krishna, is a YouTuber and founder of AK Media India. With 6+ years of experience and 300K+ followers, he's a six-figure earner who has worked with 2,000+ creators and 100+ brands including Hostinger, Filmora, Doola, and Superprofile, helping 1,000+ people succeed in online earning.",
+  brandPartners: [
+    { name: "Hostinger", href: "https://www.hostinger.com/" },
+    { name: "Filmora", href: "https://filmora.wondershare.com/" },
+    { name: "Doola", href: "https://doola.com/" },
+    { name: "Superprofile", href: "https://superprofile.com" },
+  ],
   years: "6+",
   followers: "300K+",
   creators: "2000+",
   brands: "100+",
-  yearsLabel: "Years creating",
-  followersLabel: "Followers across platforms",
-  creatorsLabel: "Creators helped",
-  brandsLabel: "Brands partnered",
+  successStories: "1000+",
+  yearsLabel: "Years Experience",
+  followersLabel: "Followers",
+  creatorsLabel: "Creators Helped",
+  brandsLabel: "Brands Worked",
+  successStoriesLabel: "Success Stories",
+  stats: [
+    { value: "6+", label: "Years Experience" },
+    { value: "300K+", label: "Followers" },
+    { value: "2000+", label: "Creators Helped" },
+    { value: "100+", label: "Brands Worked" },
+    { value: "1000+", label: "Success Stories" },
+  ],
   quote:
     "Creator-first marketing works because the incentives are aligned. Brands get authentic reach, creators get fair compensation.",
 };

@@ -523,50 +523,75 @@ Never invent statistics.
 
 ---
 
-# CREATOR SHOWCASE
+# CREATOR SHOWCASE: `section#creator`
 
-The existing website features creators with:
+## Layout & Style Analysis: `section#creator`
 
-* Followers/subscribers
-* Earnings
-* Campaign counts
-* Categories
+**Context**
+Analysis of the `section#creator` element and its five child components (`.sec-label`, `h2.sec-h`, `p.sec-s`, `.cr-slider-outer`, and `a.sec-cta`) to provide layout and styling optimizations. Reference live URL: https://akmediaindia.com/#creator ("Join 500+ Creators Earning Consistently").
 
-This is valuable information.
+**Diagnostics**
+The section currently utilizes a block-level layout with a fixed height and a dark background.
 
-Turn this into a visually exceptional **Creator Network** section.
+| Property | Current Value | Target Specification |
+| :--- | :--- | :--- |
+| **Display** | `block` | `flex` (column, centered) |
+| **Dimensions** | 320px x 1046px | Min viewport height `100vh`, max-width `1400px` |
+| **Background Color** | `rgb(13, 13, 13)` | `rgb(13, 13, 13)` (`#0d0d0d`) / dark ink |
+| **Padding** | `70px 5vw` | Fluid vertical rhythm (`100px 5vw` desktop, `70px 5vw` mobile) |
 
-Each creator card could communicate:
+**Actionable Findings**
+*   **Alignment:** Child elements are currently aligned via `text-align: center` on a block container. Transitioning to Flexbox provides robust control over vertical and horizontal centering.
+*   **Typography:** The heading (`h2.sec-h`) uses a fluid font size (`clamp(30px, 3.8vw, 50px)`), while subtext and labels remain static at 10px–14px.
+*   **CTA Styling:** The call-to-action (`a.sec-cta`) is an `inline-flex` element with specific padding and a black-on-yellow color scheme.
 
-```text
-CREATOR
+**Live Creator Roster Reference Data**
+*   **GROW with ME**: AI + Tech | 403K+ Subs | ₹3.5L+ Earned | 2+ Campaigns
+*   **Sonu Yadav**: Tech Creator | 38.5K+ Followers | ₹1.5L+ Earned | 8+ Campaigns
+*   **Fardeen**: E-Com | 111K+ Subs | ₹3.5L+ Earned | 4+ Campaigns
+*   **Me Tech**: Tech | 63.1K+ Followers | ₹2.8L+ Earned | 10+ Campaigns
+*   **Invisible Gyan**: Knowledge Creator | 210K+ Subs | ₹2L+ Earned | 5+ Campaigns
+*   **Spreading Gyan**: YouTube Growth | 2.7M+ Subs | ₹12L+ Earned | 15+ Campaigns
 
-Photo
+**Code Guidance**
+The following changes were identified as optimizations for the layout and visual hierarchy:
 
-Name
-Category
+```css
+/* Optimization 1: Modern Flexbox Centering */
+section#creator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh; /* Ensures full viewport height */
+  padding: 100px 5vw;
+  background-color: #0d0d0d;
+}
 
-403K+ Subscribers
+/* Optimization 2: Enhanced Visual Hierarchy */
+section#creator h2.sec-h {
+  font-size: 60px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
 
-₹3.5L+ Earned
+section#creator a.sec-cta {
+  background-color: #eaff00;
+  color: #000000;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
 
-2+ Campaigns
+section#creator a.sec-cta:hover {
+  transform: scale(1.05);
+}
 ```
 
-But do not simply make a standard card grid.
-
-Explore:
-
-* Horizontal scrolling
-* Editorial grid
-* Large featured creator
-* Small supporting creators
-* Hover interactions
-* Cursor reveal
-* Category filtering
-* Animated statistics
-
-The interaction should feel premium.
+*Note: The code fixes and findings above were identified on a live page in DevTools. When applying them to your codebase, adapt them to your project's specific technical stack (e.g., Tailwind CSS classes, CSS modules, framework components) rather than applying them as literal CSS overrides.*
 
 ---
 

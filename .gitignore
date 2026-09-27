@@ -26,5 +26,8 @@ pnpm-debug.log*
 *.pem
 Thumbs.db
 
+# TypeScript build info
+*.tsbuildinfo
+
 # Claude local settings (tool-specific, machine-local)
 .claude/

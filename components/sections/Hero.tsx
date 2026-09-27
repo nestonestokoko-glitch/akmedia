@@ -5,8 +5,7 @@ import gsap from "gsap";
 import SplitText from "@/components/ui/SplitText";
 import SlideButton from "@/components/ui/SlideButton";
 import Magnetic from "@/components/ui/Magnetic";
-import Counter from "@/components/ui/Counter";
-import { brandMarks, campaigns, stats } from "@/lib/data";
+import { brandMarks } from "@/lib/data";
 
 /**
  * Hero — "The Editor's Desk" (centered).
@@ -46,39 +45,36 @@ export default function Hero() {
           1.0
         )
         .fromTo(
-          q("[data-hero='ledger']"),
+          q("[data-hero='credits']"),
           { autoAlpha: 0, y: 14 },
           { autoAlpha: 1, y: 0, duration: 0.8 },
-          1.15
-        )
-        .fromTo(
-          q("[data-hero='row']"),
-          { autoAlpha: 0, y: 12 },
-          { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.06 },
-          "-=0.35"
-        )
-        .fromTo(
-          q("[data-hero='credits']"),
-          { autoAlpha: 0 },
-          { autoAlpha: 1, duration: 0.8 },
-          1.3
+          1.2
         );
 
-      // Ambient drift — the glow orbs breathe slowly behind the composition
+      // Ambient drift — the luminous glow orbs breathe dynamically behind the composition
       gsap.to(q("[data-hero='glow']"), {
-        y: -26,
-        x: 16,
-        scale: 1.06,
+        y: -32,
+        x: 22,
+        scale: 1.1,
         duration: 7,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut",
       });
       gsap.to(q("[data-hero='glow2']"), {
-        y: 20,
-        x: -12,
-        scale: 1.04,
-        duration: 9,
+        y: 28,
+        x: -20,
+        scale: 1.08,
+        duration: 8.5,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut",
+      });
+      gsap.to(q("[data-hero='glow3']"), {
+        y: -24,
+        x: -26,
+        scale: 1.09,
+        duration: 9.5,
         yoyo: true,
         repeat: -1,
         ease: "sine.inOut",
@@ -88,17 +84,7 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const tickerRows = [
-    { value: stats[0].value, suffix: stats[0].suffix, label: "Creators in the network" },
-    { value: stats[1].value, suffix: stats[1].suffix, label: "Brands paid for reach" },
-    { value: stats[2].value, suffix: stats[2].suffix, label: "Campaigns delivered" },
-    {
-      value: parseInt(campaigns[0].result, 10),
-      suffix: "%",
-      label: "Engagement lift · Filmora",
-      accent: true,
-    },
-  ];
+
 
   return (
     <section
@@ -106,22 +92,46 @@ export default function Hero() {
       id="top"
       className="relative flex w-full min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-ink"
     >
-      {/* Backdrop: grid + glow + grain */}
+      {/* 10000% Richer Luminous Aurora Gradient Backdrop */}
+      {/* Base radial gradient wash across top hemisphere */}
       <div
         aria-hidden
-        className="grid-lines absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_20%,black_35%,transparent_75%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_125%_95%_at_50%_-15%,rgba(82,169,229,0.52)_0%,rgba(124,191,239,0.36)_28%,rgba(102,129,86,0.32)_52%,rgba(0,0,0,0.98)_85%)]"
       />
+
+      {/* Primary Luminous Center Spotlight (Deep Blue-Bright Aura) */}
       <div
         data-hero="glow"
         aria-hidden
-        className="absolute -top-40 left-1/2 h-[560px] w-[820px] -translate-x-1/2 rounded-full bg-blue/15 blur-[140px]"
+        className="pointer-events-none absolute -top-36 left-1/2 h-[760px] w-[1120px] -translate-x-1/2 rounded-full bg-gradient-to-b from-blue-bright/65 via-blue/50 to-transparent blur-[120px]"
       />
+
+      {/* Vibrant Mint Aurora Wing (Right Side) */}
       <div
         data-hero="glow2"
         aria-hidden
-        className="absolute -bottom-48 -right-40 h-[460px] w-[560px] rounded-full bg-mint/10 blur-[150px]"
+        className="pointer-events-none absolute top-8 -right-36 h-[680px] w-[820px] rounded-full bg-gradient-to-bl from-mint-bright/60 via-mint/45 to-transparent blur-[130px]"
       />
-      <div aria-hidden className="grain pointer-events-none absolute inset-0" />
+
+      {/* Radiant Electric Blue Wing (Left Side) */}
+      <div
+        data-hero="glow3"
+        aria-hidden
+        className="pointer-events-none absolute top-16 -left-40 h-[640px] w-[780px] rounded-full bg-gradient-to-tr from-blue/60 via-blue-bright/45 to-transparent blur-[130px]"
+      />
+
+      {/* Central Core Light Radiance (Directly behind main headline) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-32 left-1/2 h-[380px] w-[680px] -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-bright/45 via-mint-bright/40 to-blue/45 blur-[85px]"
+      />
+
+      {/* High-Contrast Illuminated Grid Lines */}
+      <div
+        aria-hidden
+        className="grid-lines pointer-events-none absolute inset-0 opacity-75 [mask-image:radial-gradient(ellipse_85%_75%_at_50%_25%,black_45%,transparent_85%)]"
+      />
+      <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-30" />
 
       <div className="relative w-full">
         <div className="container-px mx-auto max-w-[1400px] py-20 sm:py-28 lg:py-32">
@@ -176,42 +186,6 @@ export default function Hero() {
                   Join the Network
                 </SlideButton>
               </Magnetic>
-            </div>
-
-            {/* Live data strip — real figures, horizontal ledger */}
-            <div
-              data-hero="ledger"
-              className="mt-16 w-full border-t border-line-2 pt-8"
-            >
-              <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.2em] text-dust">
-                The ledger — live
-              </p>
-              <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-line-2">
-                {tickerRows.map((row) => (
-                  <li
-                    key={row.label}
-                    data-hero="row"
-                    className="flex flex-col items-center gap-2 px-2 text-center sm:px-5"
-                  >
-                    <span
-                      className={
-                        row.accent
-                          ? "num-lock text-[clamp(2rem,3.6vw,3.2rem)] font-medium leading-none tracking-[-0.04em] text-blue-bright"
-                          : "num-lock text-[clamp(2rem,3.6vw,3.2rem)] font-medium leading-none tracking-[-0.04em] text-white"
-                      }
-                    >
-                      <Counter value={row.value} suffix={row.suffix} />
-                    </span>
-                    <span className="max-w-[16ch] text-xs leading-snug text-mist">
-                      {row.label}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-8 flex items-center justify-center gap-2.5 text-xs text-mint-bright">
-                <span aria-hidden className="size-1.5 rounded-full bg-mint" />
-                Every creator verified before a campaign ships.
-              </p>
             </div>
 
             {/* Editorial brand credits */}

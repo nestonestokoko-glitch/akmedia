@@ -207,9 +207,9 @@ export default function Contact() {
           </GsapReveal>
           </div>
 
-          {/* Right — choice + form */}
-          <GsapReveal y={28} x={24} duration={0.9} threshold={0.08}>
-          <div className="rounded-2xl border border-line-2 bg-ink p-6 sm:p-8">
+          {/* Right — choice + form (Centered on mobile) */}
+          <GsapReveal y={28} duration={0.9} threshold={0.08} className="w-full flex justify-center">
+          <div className="w-full max-w-[620px] lg:max-w-none mx-auto rounded-2xl border border-line-2 bg-ink p-6 sm:p-8">
             {/* Tab switcher */}
             <div
               role="tablist"
